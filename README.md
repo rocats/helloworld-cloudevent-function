@@ -8,6 +8,12 @@
 - [pytest-asyncio](https://github.com/pytest-dev/pytest-asyncio)
 - [structlog](https://github.com/hynek/structlog)
 
+## Bootsrap
+
+```bash
+./install
+```
+
 ## Run locally
 
 Spin up server locally, listen on port 8080
@@ -19,7 +25,7 @@ docker compose up --build
 Send a mock cloudevent
 
 ```bash
-pytest -v -s --tb=short invoke_test.py
+./venv/bin/pytest -v -s --tb=short invoke_test.py
 ```
 
 ## Build and push
