@@ -7,6 +7,7 @@ from cloudevents.http.event import CloudEvent
 def handler(event: CloudEvent) -> None:
     logger = structlog.get_logger()
     try:
+        logger.debug("Function loaded")
         logger.debug(f"Received event with ID: {event['id']} and data {event.data}")
         logger.debug(f"Cloudevent: {event}")
         logger.info("OK")
