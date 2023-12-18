@@ -13,5 +13,3 @@ def handler(event: CloudEvent) -> None:
         logger.info("OK")
     except Exception as err:
         logger.error(str(err))
-
-    return
