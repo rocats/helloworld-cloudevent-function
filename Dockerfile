@@ -27,5 +27,5 @@ COPY main.py ./
 
 EXPOSE 8080
 
-ENTRYPOINT [ "/usr/local/bin/functions-framework", "--signature-type=cloudevent"  ]
+ENTRYPOINT [ "/usr/local/bin/functions-framework", "--signature-type=cloudevent", "--debug" ]
 CMD [ "--target=handler" ]
