@@ -39,5 +39,5 @@ docker buildx create --use --platform=linux/arm64,linux/amd64 --name multi-platf
 Build and push
 
 ```bash
-docker buildx build --platform linux/arm64,linux/amd64 -t "quay.io/rocats/helloworld-python" --build-arg PYTHON_VERSION=3.12 --push .
+docker buildx build --platform linux/arm64,linux/amd64 -t "helloworld-python" --build-arg PYTHON_VERSION=3.12 .
 ```
