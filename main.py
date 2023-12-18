@@ -11,6 +11,7 @@ def handler(event: CloudEvent) -> None:
         logger.debug(f"Received event with ID: {event['id']} and data {event.data}")
         logger.debug(f"Cloudevent: {event}")
         logger.info("OK")
-        return
     except Exception as err:
         logger.error(str(err))
+
+    return
