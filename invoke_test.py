@@ -25,5 +25,6 @@ async def test_post_request():
     async with AsyncClient() as client:
         response = await client.post(url, headers=headers, content=data)
         print(response.content)
+        print(response.headers)
 
-    assert response.status_code == _status_codes.codes.OK
+    assert response.status_code == _status_codes.codes.NO_CONTENT
