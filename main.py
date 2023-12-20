@@ -4,7 +4,7 @@ import flask
 import status
 import functions_framework
 from cloudevents.http import from_http, CloudEvent
-from cloudevents.conversion import to_structured
+from cloudevents.conversion import to_binary
 
 
 @functions_framework.http
@@ -25,7 +25,7 @@ def handler(request: flask.Request) -> flask.typing.ResponseReturnValue:
         }
         data = {"message": "Hello World!"}
         event = CloudEvent(attributes, data)
-        headers, body = to_structured(event)
+        headers, body = to_binary(event)
 
         return flask.Response(
             response=body,
