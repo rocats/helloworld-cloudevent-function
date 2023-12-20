@@ -27,4 +27,4 @@ async def test_post_request():
         print(response.content)
         print(response.headers)
 
-    assert response.status_code == _status_codes.codes.NO_CONTENT
+    assert response.status_code == _status_codes.codes.OK
