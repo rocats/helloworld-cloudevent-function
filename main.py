@@ -27,6 +27,10 @@ def handler(request: flask.Request) -> flask.typing.ResponseReturnValue:
         event = CloudEvent(attributes, data)
         headers, body = to_structured(event)
 
-        return flask.Response(response=body, headers=headers, status=status.HTTP_200_OK)
+        return flask.Response(
+            response=body,
+            headers={**headers, **{"Prefer": "reply"}},
+            status=status.HTTP_200_OK,
+        )
     except Exception as err:
         logger.error(str(err))
