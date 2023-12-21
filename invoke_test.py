@@ -1,6 +1,6 @@
 import pytest
 from cloudevents.http import CloudEvent
-from cloudevents.conversion import to_structured
+from cloudevents.conversion import to_binary
 from httpx import AsyncClient, _status_codes
 
 
@@ -20,7 +20,7 @@ async def test_post_request():
     }
 
     event = CloudEvent(attributes, payload)
-    headers, data = to_structured(event)
+    headers, data = to_binary(event)
 
     async with AsyncClient() as client:
         response = await client.post(url, headers=headers, content=data)

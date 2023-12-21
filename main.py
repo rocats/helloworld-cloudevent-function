@@ -1,6 +1,7 @@
 from uuid import uuid4
 import structlog
-import flask
+from flask.typing import ResponseReturnValue
+from flask import Request, Response
 import status
 import functions_framework
 from cloudevents.http import from_http, CloudEvent
@@ -8,7 +9,7 @@ from cloudevents.conversion import to_binary
 
 
 @functions_framework.http
-def handler(request: flask.Request) -> flask.typing.ResponseReturnValue:
+def handler(request: Request) -> ResponseReturnValue:  # type:ignore
     logger = structlog.get_logger()
     try:
         event = from_http(request.headers, request.get_data())
@@ -27,7 +28,7 @@ def handler(request: flask.Request) -> flask.typing.ResponseReturnValue:
         event = CloudEvent(attributes, data)
         headers, body = to_binary(event)
 
-        return flask.Response(
+        return Response(
             response=body,
             headers={**headers, **{"Prefer": "reply"}},
             status=status.HTTP_200_OK,
